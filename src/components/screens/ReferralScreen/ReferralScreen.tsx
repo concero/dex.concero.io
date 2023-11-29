@@ -1,6 +1,7 @@
 import classNames from './ReferralScreen.module.pcss'
 import { EarningsTimelineCard } from '../../cards/EarningsTimelineCard/EarningsTimelineCard'
 import { EarningBreakDownCard } from '../../cards/EarningBreakDownCard/EarningBreakDownCard'
+import { ReferralHistoryCard } from '../../cards/ReferralHistoryCard/ReferralHistoryCard'
 
 export function ReferralScreen() {
 	return (
@@ -8,7 +9,7 @@ export function ReferralScreen() {
 			<div className={classNames.mainStack}>
 				<EarningsTimelineCard />
 				<EarningBreakDownCard />
-				{/* <RefferalHistoryCard /> */}
+				<ReferralHistoryCard />
 			</div>
 		</div>
 	)

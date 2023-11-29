@@ -134,5 +134,8 @@ export const en = {
 		earningsBreakDownCard: {
 			title: 'Earnings breakdown',
 		},
+		referralHistoryCard: {
+			title: 'History',
+		},
 	},
 }
