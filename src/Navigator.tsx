@@ -8,6 +8,7 @@ import { FullScreenLoader } from './components/layout/FullScreenLoader/FullScree
 const ExchangeScreen = lazy(() => import('./components/screens/ExchangeScreen/ExchangeScreen').then(module => ({ default: module.ExchangeScreen })))
 const PortfolioScreen = lazy(() => import('./components/screens/PortfolioScreen/PortfolioScreen').then(module => ({ default: module.PortfolioScreen })))
 const StakingScreen = lazy(() => import('./components/screens/StakingScreen/StakingScreen').then(module => ({ default: module.StakingScreen })))
+const ReferralScreen = lazy(() => import('./components/screens/ReferralScreen/ReferralScreen').then(module => ({ default: module.ReferralScreen })))
 
 export interface NavigatorProps {}
 
@@ -37,6 +38,14 @@ export const Navigator: FC<NavigatorProps> = () => (
 					element={
 						<Suspense fallback={<FullScreenLoader />}>
 							<StakingScreen />
+						</Suspense>
+					}
+				/>
+				<Route
+					path={routes.referral}
+					element={
+						<Suspense fallback={<FullScreenLoader />}>
+							<ReferralScreen />
 						</Suspense>
 					}
 				/>

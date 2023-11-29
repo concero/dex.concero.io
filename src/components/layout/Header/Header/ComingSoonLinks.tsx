@@ -10,9 +10,6 @@ export function ComingSoonLinks() {
 			<Link className={classNames.comingSoon} to="#">
 				{t('header.portfolio')}
 			</Link>
-			<Link className={classNames.comingSoon} to="#">
-				{t('header.myReferrals')}
-			</Link>
 		</div>
 	)
 }

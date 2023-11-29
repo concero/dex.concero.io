@@ -8,6 +8,7 @@ export const routes = {
 	profile: '/profile',
 	staking: '/staking',
 	portfolio: '/portfolio',
+	referral: '/referral',
 	notFound: '/404',
 	resetPassword: '/reset-password',
 }

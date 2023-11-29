@@ -128,5 +128,11 @@ export const en = {
 		languageModal: {
 			title: 'Change language',
 		},
+		earningsTimelineCard: {
+			title: 'Earnings timeline',
+		},
+		earningsBreakDownCard: {
+			title: 'Earnings breakdown',
+		},
 	},
 }

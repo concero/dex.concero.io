@@ -25,6 +25,7 @@ export const Header: FC<HeaderProps> = ({ children }) => {
 	const isMobile = useMediaQuery('mobile')
 	const matchExchange = useMatch(routes.exchange)
 	const matchStaking = useMatch(routes.staking)
+	const matchReferral = useMatch(routes.referral)
 	const { t } = useTranslation()
 
 	const handleHelpButtonClick = () => {
@@ -51,6 +52,9 @@ export const Header: FC<HeaderProps> = ({ children }) => {
 						</Link>
 						<Link className={matchStaking ? classNames.active : classNames.link} to={routes.staking}>
 							{t('header.staking')}
+						</Link>
+						<Link className={matchReferral ? classNames.active : classNames.link} to={routes.referral}>
+							{t('header.myReferrals')}
 						</Link>
 						{ComingSoon}
 					</ul>
