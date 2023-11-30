@@ -137,5 +137,16 @@ export const en = {
 		referralHistoryCard: {
 			title: 'History',
 		},
+		availableRewardsCard: {
+			title: 'Available rewards',
+			claim: 'Claim',
+		},
+		referral: {
+			refereeTradingVolume: 'Referee trading volume',
+			totalEarnings: 'Total earnings',
+			totalUsers: 'Total users',
+			topRefereesByVolume: 'Top referees by volume',
+			leaderBoard: 'Leaderboard',
+		},
 	},
 }
