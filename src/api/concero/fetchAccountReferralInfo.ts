@@ -16,7 +16,7 @@ export async function fetchAccountReferralInfo(walletAddress: string): Promise<A
 	const url = `https://api.thegraph.com/subgraphs/name/satoshi-concero/referral-system-subgraph`
 	const query = `
     query {
-       account(id: "${walletAddress}") {
+       account(id: "${walletAddress.toLowerCase()}") {
           id
           activatedCode
           referralCode
