@@ -3,6 +3,10 @@ import { CardHeader } from '../CardHeader/CardHeader'
 import { useTranslation } from 'react-i18next'
 import { Chart } from '../../layout/Chart/Chart'
 import { Tag } from '../../tags/Tag/Tag'
+import { Button } from '../../buttons/Button/Button'
+import { setReferralCode } from '../../../web3/referralFunctions/setReferralCode'
+import { getSigner } from '../../../web3/getSigner'
+import { useSwitchNetwork, useWalletClient } from 'wagmi'
 
 const data = [
 	{
@@ -113,6 +117,12 @@ const data = [
 
 export function EarningsTimelineCard() {
 	const { t } = useTranslation()
+	const walletClient = useWalletClient()
+	const { switchNetworkAsync } = useSwitchNetwork()
+
+	const handleGenerateCodeClick = async () => {
+		await setReferralCode('test', await getSigner(5, switchNetworkAsync))
+	}
 
 	return (
 		<div className={`card ${classNames.container}`}>
@@ -126,6 +136,7 @@ export function EarningsTimelineCard() {
 				</div>
 			</div>
 			<Chart data={data} />
+			<Button onClick={handleGenerateCodeClick}>Generate code</Button>
 		</div>
 	)
 }

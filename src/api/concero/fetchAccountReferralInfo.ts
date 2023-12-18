@@ -4,6 +4,12 @@ interface AccountReferralInfo {
 	id: string
 	activatedCode: string
 	referralCode: string
+	reward: {
+		id: string
+		reservedAmount: string
+		claimedAmount: string
+		claimableAmount: string
+	}[]
 }
 
 export async function fetchAccountReferralInfo(walletAddress: string): Promise<AccountReferralInfo | undefined> {
@@ -14,6 +20,12 @@ export async function fetchAccountReferralInfo(walletAddress: string): Promise<A
           id
           activatedCode
           referralCode
+          reward {
+						id
+						reservedAmount
+						claimedAmount
+						claimableAmount
+					}
        }
     }
   `
