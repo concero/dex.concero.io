@@ -1,18 +1,7 @@
 import { post } from '../client'
+import { ReferralAccountInfo } from './types'
 
-interface AccountReferralInfo {
-	id: string
-	activatedCode: string
-	referralCode: string
-	reward: {
-		id: string
-		reservedAmount: string
-		claimedAmount: string
-		claimableAmount: string
-	}[]
-}
-
-export async function fetchAccountReferralInfo(walletAddress: string): Promise<AccountReferralInfo | undefined> {
+export async function fetchAccountReferralInfo(walletAddress: string): Promise<ReferralAccountInfo | undefined> {
 	const url = `https://api.thegraph.com/subgraphs/name/satoshi-concero/referral-system-subgraph`
 	const query = `
     query {

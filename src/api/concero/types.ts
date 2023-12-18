@@ -26,3 +26,15 @@ export interface Chain {
 	providers: Provider[]
 	symbol: string
 }
+
+export interface ReferralAccountInfo {
+	id: string
+	activatedCode: string
+	referralCode: string
+	reward: {
+		id: string
+		reservedAmount: string
+		claimedAmount: string
+		claimableAmount: string
+	}[]
+}

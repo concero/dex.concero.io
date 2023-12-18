@@ -11,11 +11,21 @@ import { useReferralReducer } from './userReferralReducer/useReferralReducer'
 import { useEffect } from 'react'
 import { populateReferralState } from './populateReferralState'
 import { useAccount } from 'wagmi'
+import { ReferralReward } from './userReferralReducer/types'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
 	const { address } = useAccount()
 	const [referralState, referralDispatch] = useReferralReducer()
+
+	const getTotalEarnings = (reward: ReferralReward[]) => {
+		if (!reward.length) return '0'
+
+		const total = reward.reduce((acc, curr) => {
+			return acc + curr.amount
+		}, 0)
+		return `$${total}`
+	}
 
 	useEffect(() => {
 		populateReferralState(referralDispatch, address as string)
@@ -31,8 +41,8 @@ export function ReferralScreen() {
 			<div className={classNames.secondaryStack}>
 				<ReferralRewardsCard referralState={referralState} />
 				<VolumeCard title={t('referral.refereeTradingVolume')} value={'$350,050'} />
-				<VolumeCard title={t('referral.totalEarnings')} value={'$350,050'} />
-				<VolumeCard title={t('referral.totalUsers')} value={'15'} />
+				<VolumeCard title={t('referral.totalEarnings')} value={getTotalEarnings(referralState.reward)} />
+				<VolumeCard title={t('referral.totalUsers')} value={referralState.usersCount} />
 				<TotalRefereesCard />
 				<LeaderBoardCard />
 			</div>

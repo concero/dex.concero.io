@@ -5,20 +5,16 @@ const initialState = {
 	id: null,
 	referralCode: null,
 	activatedCode: null,
-	reward: [
-		{
-			id: null,
-			reservedAmount: null,
-			claimedAmount: null,
-			claimableAmount: null,
-		},
-	],
+	reward: [],
+	usersCount: 0,
 }
 
 const referralReducer = (state: ReferralState, action: ReferralAction) => {
 	switch (action.type) {
 		case referralActionType.populateReferralState:
-			return { ...action.state }
+			return { ...state, id: action.state.id, referralCode: action.state.referralCode, activatedCode: action.state.activatedCode, reward: action.state.reward }
+		case referralActionType.setUsersCount:
+			return { ...state, usersCount: action.count }
 		default:
 			return state
 	}
