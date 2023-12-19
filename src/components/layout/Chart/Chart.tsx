@@ -4,16 +4,7 @@ import { animated, useSpring } from '@react-spring/web'
 import { ThemeContext } from '../../../hooks/themeContext'
 import { areaSeriesOptions, chartOptions } from './chartOptions'
 import { createTooltip, updateTooltip } from './Tooltip'
-
-interface DataPoint {
-	time: string
-	value: number
-}
-
-interface ChartProps {
-	data: DataPoint[]
-	secondData?: DataPoint[] | null
-}
+import { ChartProps, DataPoint } from './types'
 
 const useFadeInAnimation = () =>
 	useSpring({
@@ -45,7 +36,7 @@ const averageData = (data: DataPoint[], interval: number): DataPoint[] => {
 	return result
 }
 
-export const Chart: FC<ChartProps> = ({ data, secondData = null }) => {
+export const Chart: FC<ChartProps> = ({ data, secondData = null, options }) => {
 	const chartRef = useRef<HTMLDivElement>(null)
 	const tooltipRef = useRef<HTMLDivElement | null>(null)
 	const seriesRef = useRef<any>(null)
@@ -54,7 +45,7 @@ export const Chart: FC<ChartProps> = ({ data, secondData = null }) => {
 
 	useEffect(() => {
 		if (!chartRef.current) return
-		const chart = createChart(chartRef.current, chartOptions(colors))
+		const chart = createChart(chartRef.current, chartOptions(colors, options))
 		setupChartStyles(chart, colors)
 		seriesRef.current = chart.addAreaSeries(areaSeriesOptions(colors, theme))
 		seriesRef.current.setData(data)

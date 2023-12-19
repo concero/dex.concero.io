@@ -1,6 +1,7 @@
 import { ColorType } from 'lightweight-charts'
+import { ChartOptions } from './types'
 
-export const chartOptions = colors => ({
+export const chartOptions = (colors, options: ChartOptions = { horizontalScaleVisible: true, verticalScaleVisible: true }) => ({
 	layout: {
 		background: {
 			type: ColorType.Solid,
@@ -22,8 +23,12 @@ export const chartOptions = colors => ({
 		},
 	},
 	timeScale: {
+		visible: options.horizontalScaleVisible,
 		timeVisible: true,
 		secondsVisible: true,
+	},
+	priceScale: {
+		visible: options.verticalScaleVisible,
 	},
 	crosshair: {
 		horzLine: {
