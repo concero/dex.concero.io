@@ -2,45 +2,7 @@ import { CardHeader } from '../CardHeader/CardHeader'
 import { useTranslation } from 'react-i18next'
 import { RechartsBarChart } from '../../layout/RechartsBarChart/RechartsBarChart'
 import { colors } from '../../../constants/colors'
-
-const data = [
-	{
-		name: 'BTC',
-		amount: 15,
-	},
-	{
-		name: 'ETH',
-		amount: 20,
-	},
-	{
-		name: 'ADA',
-		amount: 30,
-	},
-	{
-		name: 'DOT',
-		amount: 40,
-	},
-	{
-		name: 'LINK',
-		amount: 10,
-	},
-	{
-		name: 'XRP',
-		amount: 60,
-	},
-	{
-		name: 'LTC',
-		amount: 12,
-	},
-	{
-		name: 'BCH',
-		amount: 40,
-	},
-	{
-		name: 'Other',
-		amount: 20,
-	},
-]
+import { ReferralReward, ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 
 const barColors = [
 	colors.green.dark,
@@ -54,8 +16,19 @@ const barColors = [
 	colors.grey.medium,
 ]
 
-export function EarningBreakDownCard() {
+interface EarningBreakDownCardProps {
+	referralState: ReferralState
+}
+
+export function EarningBreakDownCard({ referralState }: EarningBreakDownCardProps) {
 	const { t } = useTranslation()
+
+	const data = referralState.reward.map((reward: ReferralReward) => {
+		return {
+			name: reward.id,
+			amount: reward.reservedAmount,
+		}
+	})
 
 	return (
 		<div className={`card`}>

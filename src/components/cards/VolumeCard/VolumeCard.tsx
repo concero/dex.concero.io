@@ -2,7 +2,7 @@ import { CardHeader } from '../CardHeader/CardHeader'
 
 interface VolumeCardProps {
 	title: string
-	value: string
+	value: number | string
 }
 
 export function VolumeCard({ title, value }: VolumeCardProps) {
