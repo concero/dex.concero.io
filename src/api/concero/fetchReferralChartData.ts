@@ -1,7 +1,7 @@
 import { post } from '../client'
 import { addingTokenDecimals } from '../../utils/formatting'
 
-export async function fetchReferralChartData(walletAddress: string): Promise<> {
+export async function fetchReferralChartData(walletAddress: string) {
 	const url = `https://api.thegraph.com/subgraphs/name/satoshi-concero/referral-system-subgraph`
 	const query = `
     query MyQuery {

@@ -27,14 +27,19 @@ export interface Chain {
 	symbol: string
 }
 
+export interface ReferralReward {
+	id: string
+	reservedAmount: string
+	claimedAmount: string
+	claimableAmount: string
+	symbol: string
+	decimals: number
+}
+
 export interface ReferralAccountInfo {
 	id: string
 	activatedCode: string
 	referralCode: string
-	reward: {
-		id: string
-		reservedAmount: string
-		claimedAmount: string
-		claimableAmount: string
-	}[]
+	totalUsers: number
+	rewards: ReferralReward[]
 }

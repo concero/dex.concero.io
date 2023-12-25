@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { RechartsBarChart } from '../../layout/RechartsBarChart/RechartsBarChart'
 import { colors } from '../../../constants/colors'
 import { ReferralReward, ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
+import { addingTokenDecimals } from '../../../utils/formatting'
 
 const barColors = [
 	colors.green.dark,
@@ -22,11 +23,10 @@ interface EarningBreakDownCardProps {
 
 export function EarningBreakDownCard({ referralState }: EarningBreakDownCardProps) {
 	const { t } = useTranslation()
-
-	const data = referralState.reward.map((reward: ReferralReward) => {
+	const data = referralState.rewards?.map((reward: ReferralReward) => {
 		return {
-			name: reward.id,
-			amount: reward.reservedAmount,
+			name: reward.symbol,
+			amount: Number(addingTokenDecimals(reward.reservedAmount, reward.decimals)),
 		}
 	})
 

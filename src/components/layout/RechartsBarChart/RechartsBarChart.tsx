@@ -1,12 +1,14 @@
 import { Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import classNames from '../../cards/BarChartCard/BarChartCard.module.pcss'
 
+interface Item {
+	name: string
+	amount: number
+}
+
 interface RechartsBarChartProps {
-	data: {
-		name: string
-		amount: number
-	}[]
-	barColors?: string[]
+	data: Item[]
+	barColors: string[]
 }
 
 export function RechartsBarChart({ data, barColors }: RechartsBarChartProps) {
@@ -14,7 +16,7 @@ export function RechartsBarChart({ data, barColors }: RechartsBarChartProps) {
 		<ResponsiveContainer width="100%" height={200} className={classNames.chartContainer}>
 			<BarChart width={150} height={80} data={data} barSize={24}>
 				<Bar dataKey="amount" radius={[5, 5, 5, 5]}>
-					{data.map((entry, index) => (
+					{data.map((item: Item, index) => (
 						<Cell key={`cell-${index}`} fill={barColors[index]} />
 					))}
 				</Bar>
