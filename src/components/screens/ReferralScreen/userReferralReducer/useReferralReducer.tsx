@@ -7,6 +7,7 @@ const initialState: ReferralState = {
 	activatedCode: '',
 	rewards: [],
 	totalUsers: 0,
+	history: [],
 }
 
 const referralReducer = (state: ReferralState, action: ReferralAction): ReferralState => {
@@ -19,6 +20,7 @@ const referralReducer = (state: ReferralState, action: ReferralAction): Referral
 				activatedCode: action.state.activatedCode || '',
 				rewards: action.state.rewards || [],
 				totalUsers: action.state.totalUsers || 0,
+				history: action.state.history || [],
 			}
 		default:
 			throw new Error(`Unhandled action type: ${action}`)

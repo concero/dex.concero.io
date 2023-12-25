@@ -1,3 +1,5 @@
+import { ReferralHistoryItem } from '../../components/screens/ReferralScreen/userReferralReducer/types'
+
 export interface Provider {
 	name: string
 	symbol: string
@@ -37,6 +39,7 @@ export interface ReferralReward {
 }
 
 export interface ReferralAccountInfo {
+	history: ReferralHistoryItem[]
 	id: string
 	activatedCode: string
 	referralCode: string

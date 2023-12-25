@@ -40,7 +40,7 @@ export function ReferralScreen() {
 			<div className={classNames.mainStack}>
 				<EarningsTimelineCard />
 				<EarningBreakDownCard referralState={referralState} />
-				<ReferralHistoryCard />
+				<ReferralHistoryCard referralState={referralState} />
 			</div>
 			<div className={classNames.secondaryStack}>
 				<ReferralRewardsCard referralState={referralState} />
