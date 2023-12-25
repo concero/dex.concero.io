@@ -18,7 +18,7 @@ const referralReducer = (state: ReferralState, action: ReferralAction): Referral
 				referralCode: action.state.referralCode || '',
 				activatedCode: action.state.activatedCode || '',
 				rewards: action.state.rewards || [],
-				totalUsers: state.totalUsers || 0,
+				totalUsers: action.state.totalUsers || 0,
 			}
 		default:
 			throw new Error(`Unhandled action type: ${action}`)
