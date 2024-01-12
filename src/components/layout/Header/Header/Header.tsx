@@ -48,10 +48,10 @@ export const Header: FC<HeaderProps> = ({ children }) => {
 				{!isMobile ? (
 					<ul>
 						<Link className={matchExchange ? classNames.active : classNames.link} to={routes.swap}>
-							{t('header.exchange')}
+							{t('header.swap')}
 						</Link>
 						<Link className={matchStaking ? classNames.active : classNames.link} to={routes.earn}>
-							{t('header.staking')}
+							{t('header.earn')}
 						</Link>
 						<Link className={matchReferral ? classNames.active : classNames.link} to={routes.referral}>
 							{t('header.myReferrals')}
