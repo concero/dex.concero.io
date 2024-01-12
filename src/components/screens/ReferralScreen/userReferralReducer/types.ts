@@ -1,4 +1,4 @@
-import { ReferralAccountInfo, ReferralReward } from '../../../../api/concero/types'
+import { type ReferralAccountInfo, type ReferralReward } from '../../../../api/concero/types'
 
 export enum referralActionType {
 	populateReferralState = 0,
@@ -19,7 +19,7 @@ export interface ReferralState {
 	history: ReferralHistoryItem[]
 }
 
-export type ReferralAction = {
+export interface ReferralAction {
 	type: referralActionType.populateReferralState
 	state: ReferralAccountInfo
 }

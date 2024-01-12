@@ -1,9 +1,9 @@
 import { fetchRangoRoutes } from '../../../../api/rango/fetchRangoRoutes'
 import { fetchLifiRoutes } from '../../../../api/lifi/fetchLifiRoutes'
-import { StandardRoute } from '../../../../types/StandardRoute'
-import { Settings, SwapAction, SwapStateDirection } from '../swapReducer/types'
-import { Dispatch } from 'react'
-import { GetLifiRoutes, GetRangoRoutes, PopulateRoutes } from './types'
+import { type StandardRoute } from '../../../../types/StandardRoute'
+import { type Settings, type SwapAction, type SwapStateDirection } from '../swapReducer/types'
+import { type Dispatch } from 'react'
+import { type GetLifiRoutes, type GetRangoRoutes, type PopulateRoutes } from './types'
 import { fetchWalletBalancesOnStepChains } from './fetchWalletBalancesOnStepChains'
 import { trackEvent } from '../../../../hooks/useTracking'
 import { action, category } from '../../../../constants/tracking'
@@ -43,7 +43,7 @@ const getRangoRoutes = async ({ routes, from, to, settings, swapDispatch }: GetR
 export const getRoutes = async (from: SwapStateDirection, to: SwapStateDirection, settings: Settings, swapDispatch: Dispatch<SwapAction>): Promise<void> => {
 	if (!from.amount || !parseFloat(from.amount)) return
 	swapDispatch({ type: 'SET_LOADING', payload: true })
-	const routes: StandardRoute[] | [] = []
+	const routes: StandardRoute[] = []
 
 	try {
 		await Promise.all([getLifiRoutes({ routes, from, to, settings, swapDispatch }), getRangoRoutes({ routes, from, to, settings, swapDispatch })])

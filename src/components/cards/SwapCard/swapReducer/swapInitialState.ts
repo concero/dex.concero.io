@@ -1,4 +1,4 @@
-import { SwapState } from './types'
+import { type SwapState } from './types'
 import { ButtonType } from '../../../buttons/SwapButton/constants'
 
 export const swapInitialState = (selection): SwapState => ({
@@ -29,6 +29,7 @@ export const swapInitialState = (selection): SwapState => ({
 	settings: {
 		slippage_percent: '5',
 		showDestinationAddress: false,
+		allowSwitchChain: true,
 	},
 	chains: [],
 	buttonState: { type: ButtonType.ENTER_AMOUNT },

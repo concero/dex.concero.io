@@ -1,5 +1,5 @@
-import { Dispatch, useReducer } from 'react'
-import { ReferralAction, referralActionType, ReferralState } from './types'
+import { type Dispatch, useReducer } from 'react'
+import { type ReferralAction, referralActionType, type ReferralState } from './types'
 
 const initialState: ReferralState = {
 	id: '',
@@ -23,7 +23,7 @@ const referralReducer = (state: ReferralState, action: ReferralAction): Referral
 				history: action.state.history || [],
 			}
 		default:
-			throw new Error(`Unhandled action type: ${action}`)
+			throw new Error(`Unhandled action type: ${action.type as string}`)
 	}
 }
 

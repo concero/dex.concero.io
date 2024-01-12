@@ -1,9 +1,10 @@
-import { Dispatch, MutableRefObject, useEffect } from 'react'
+import { type Dispatch, type MutableRefObject, useEffect } from 'react'
+import { type Config } from '@wagmi/core'
 import { setHistoryCard } from './handlers/setHistoryCard'
 import { getBalance } from '../../../utils/getBalance'
 import { clearRoutes } from './handlers/handleRoutes'
 import { handleFetchRoutes } from './handlers/handleFetchRoutes'
-import { SwapAction, SwapState } from './swapReducer/types'
+import { type SwapAction, type SwapState } from './swapReducer/types'
 import { setSwapCard } from './handlers/setSwapCard'
 
 interface UseSwapCardEffectsProps {
@@ -12,9 +13,10 @@ interface UseSwapCardEffectsProps {
 	address: string
 	dispatch: Dispatch<any>
 	typingTimeoutRef: MutableRefObject<number | undefined>
+	connector: NonNullable<Config<TPublicClient>['connector']> | undefined
 }
 
-export function useSwapCardEffects({ swapState, swapDispatch, address, dispatch, typingTimeoutRef }: UseSwapCardEffectsProps) {
+export function useSwapCardEffects({ swapState, swapDispatch, address, dispatch, typingTimeoutRef, connector }: UseSwapCardEffectsProps) {
 	const { from, to, settings, selectedRoute } = swapState
 
 	useEffect(() => {
@@ -29,8 +31,10 @@ export function useSwapCardEffects({ swapState, swapDispatch, address, dispatch,
 	useEffect(() => {
 		clearRoutes(typingTimeoutRef, swapDispatch)
 		handleFetchRoutes(from, to, settings, swapDispatch, typingTimeoutRef)
-		return () => clearRoutes(typingTimeoutRef, swapDispatch)
-	}, [from.token, from.amount, from.chain, to.token, to.chain])
+		return () => {
+			clearRoutes(typingTimeoutRef, swapDispatch)
+		}
+	}, [from.token, from.amount, from.chain, to.token, to.chain, settings.slippage_percent, settings.allowSwitchChain])
 
 	useEffect(() => {
 		if (!selectedRoute) return
@@ -43,6 +47,12 @@ export function useSwapCardEffects({ swapState, swapDispatch, address, dispatch,
 			},
 		})
 	}, [selectedRoute])
+
+	useEffect(() => {
+		if (!connector) return
+		const allowSwitchChain = connector.name !== 'WalletConnect'
+		swapDispatch({ type: 'SET_SETTINGS', payload: { allowSwitchChain } })
+	}, [connector?.id])
 
 	useEffect(() => {
 		swapDispatch({ type: 'SET_ADDRESS', direction: 'from', payload: address })

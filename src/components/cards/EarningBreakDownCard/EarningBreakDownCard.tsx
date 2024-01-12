@@ -2,7 +2,7 @@ import { CardHeader } from '../CardHeader/CardHeader'
 import { useTranslation } from 'react-i18next'
 import { RechartsBarChart } from '../../layout/RechartsBarChart/RechartsBarChart'
 import { colors } from '../../../constants/colors'
-import { ReferralReward, ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
+import { type ReferralReward, type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 import { addingTokenDecimals } from '../../../utils/formatting'
 
 const barColors = [

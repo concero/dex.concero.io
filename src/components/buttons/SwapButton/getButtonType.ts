@@ -1,7 +1,6 @@
-import { SwapState } from '../../cards/SwapCard/swapReducer/types'
+import { type SwapState } from '../../cards/SwapCard/swapReducer/types'
 import { ButtonType } from './constants'
-import { isInsufficientFee } from './isInsufficientFee'
-import { Fees } from '../../../types/StandardRoute'
+import { type Fees } from '../../../types/StandardRoute'
 import { config } from '../../../constants/config'
 
 export function getButtonType(swapState: SwapState, isConnected: boolean): ButtonType {
@@ -19,7 +18,7 @@ export function getButtonType(swapState: SwapState, isConnected: boolean): Butto
 		return ButtonType.CONNECT_WALLET
 	}
 
-	if (!from.amount || (from.amount && !routes.length)) {
+	if (!from.amount || (from.amount && routes.length === 0)) {
 		return ButtonType.ENTER_AMOUNT
 	}
 
@@ -31,19 +30,18 @@ export function getButtonType(swapState: SwapState, isConnected: boolean): Butto
 	}
 
 	const fullAmount = Number(from.amount) + Number(fromGasAmount)
-	const balanceNumber = Number(balance.split(' ')[0] ?? 0)
 
-	if (balance && fullAmount > balanceNumber) {
+	if (balance && fullAmount > Number(balance.amount.formatted)) {
 		return ButtonType.LOW_BALANCE
 	}
 
-	const isInsufficient = isInsufficientFee(swapState)
+	// const isInsufficient = isInsufficientFee(swapState)
 
-	if (isInsufficient) {
-		return ButtonType.LOW_FEES
-	}
+	// if (isInsufficient) {
+	// 	return ButtonType.LOW_FEES
+	// }
 
-	if (from.amount && to.amount && routes.length) {
+	if (from.amount && to.amount && routes.length > 0) {
 		return ButtonType.SWAP
 	}
 

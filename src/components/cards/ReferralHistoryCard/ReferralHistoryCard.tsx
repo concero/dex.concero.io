@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Table } from '../../layout/Table/Table'
 import classNames from './ReferralHistoryCard.module.pcss'
 import { IconUser } from '@tabler/icons-react'
-import { ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
+import { type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 import { unixtimeFromNow } from '../../../utils/formatting'
 
 interface ReferralHistoryCardProps {

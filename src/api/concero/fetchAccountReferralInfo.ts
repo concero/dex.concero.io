@@ -1,5 +1,5 @@
 import { post } from '../client'
-import { ReferralAccountInfo } from './types'
+import { type ReferralAccountInfo } from './types'
 
 export async function fetchAccountReferralInfo(walletAddress: string): Promise<ReferralAccountInfo | undefined> {
 	const url = `https://api.thegraph.com/subgraphs/name/satoshi-concero/referral-system-subgraph`

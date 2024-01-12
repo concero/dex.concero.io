@@ -1,5 +1,5 @@
 import { ColorType } from 'lightweight-charts'
-import { ChartOptions } from './types'
+import { type ChartOptions } from './types'
 
 export const chartOptions = (colors, options: ChartOptions = { horizontalScaleVisible: true, verticalScaleVisible: true }) => ({
 	layout: {

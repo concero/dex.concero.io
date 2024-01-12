@@ -1,4 +1,4 @@
-import { ReferralHistoryItem } from '../../components/screens/ReferralScreen/userReferralReducer/types'
+import { type ReferralHistoryItem } from '../../components/screens/ReferralScreen/userReferralReducer/types'
 
 export interface Provider {
 	name: string

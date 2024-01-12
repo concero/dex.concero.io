@@ -1,7 +1,7 @@
-import { Fees, StandardRoute, Step } from '../../types/StandardRoute'
-import { BestRouteResponse } from 'rango-types/src/api/main/routing'
+import { type Fees, type StandardRoute, type Step } from '../../types/StandardRoute'
+import { type BestRouteResponse } from 'rango-types/src/api/main/routing'
 import BigNumber from 'bignumber.js'
-import { SwapFee, SwapResult } from 'rango-types/src/api/main/common'
+import { type SwapFee, type SwapResult } from 'rango-types/src/api/main/common'
 import { roundNumberByDecimals } from '../../utils/formatting'
 import { standardizeRangoBestRouteStep } from './standardizeRangoBestRouteStep'
 import { config } from '../../constants/config'
@@ -56,6 +56,7 @@ export async function standardizeRangoBestRoute(route: BestRouteResponse, from: 
 			chain: {
 				id: route.from.blockchain,
 			},
+			address: from.address,
 		},
 		to: {
 			token: {
@@ -69,6 +70,7 @@ export async function standardizeRangoBestRoute(route: BestRouteResponse, from: 
 			chain: {
 				id: route.to.blockchain,
 			},
+			address: to.address,
 		},
 		steps: getSteps(route),
 		cost: {

@@ -1,4 +1,4 @@
-import { ReferralAccountInfo } from './types'
+import { type ReferralAccountInfo } from './types'
 import { post } from '../client'
 
 export async function fetchReferralAccountsByCode(referralCode: string | undefined): Promise<ReferralAccountInfo[] | undefined> {

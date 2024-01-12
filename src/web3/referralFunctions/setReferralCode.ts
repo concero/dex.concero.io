@@ -1,4 +1,4 @@
-import { JsonRpcSigner } from '@ethersproject/providers/src.ts/json-rpc-provider'
+import { type JsonRpcSigner } from '@ethersproject/providers/src.ts/json-rpc-provider'
 import { Contract } from 'ethers'
 import { config } from '../../constants/config'
 

@@ -1,6 +1,6 @@
 import { get } from '../client'
 import { config } from '../../constants/config'
-import { ReferralState } from '../../components/screens/ReferralScreen/userReferralReducer/types'
+import { type ReferralState } from '../../components/screens/ReferralScreen/userReferralReducer/types'
 
 export async function fetchReferralInfo(walletAddress: string): Promise<ReferralState | null> {
 	try {

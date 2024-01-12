@@ -11,7 +11,7 @@ import { useReferralReducer } from './userReferralReducer/useReferralReducer'
 import { useEffect } from 'react'
 import { populateReferralState } from './populateReferralState'
 import { useAccount } from 'wagmi'
-import { ReferralReward } from './userReferralReducer/types'
+import { type ReferralReward } from './userReferralReducer/types'
 import { addingTokenDecimals } from '../../../utils/formatting'
 
 export function ReferralScreen() {
