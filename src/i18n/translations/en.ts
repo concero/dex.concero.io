@@ -16,7 +16,7 @@ export const en = {
 			exchange: 'Exchange',
 			staking: 'Staking',
 			portfolio: 'Portfolio',
-			myReferrals: 'My referrals',
+			myReferrals: 'Referrals',
 			helpUsImprove: 'Help us improve',
 			copyAddress: 'Copy address',
 			logOut: 'Log out',
