@@ -19,21 +19,21 @@ export const handleTransactionError = (e: Error, swapDispatch: Dispatch<SwapActi
 			category: category.SwapCard,
 			action: action.SwapRejected,
 			label: 'User rejected swap',
-			data: { provider: selectedRoute.provider, error: e.toString() },
+			data: { stdRoute: selectedRoute },
 		})
 	} else if (e.toString().toLowerCase().includes('insufficient')) {
 		swapDispatch({
 			type: 'APPEND_SWAP_STEP',
 			payload: { title: 'Insufficient balance', body: 'Please check your balance and try again', status: 'error' },
 		})
-
+		trackEvent({ category: category.SwapCard, action: action.SwapFailed, label: 'swap_failed', data: { provider: selectedRoute.provider, selectedRoute } })
 		logTxToDB({ tx_id: selectedRoute.id, status: 'failure', provider: selectedRoute.provider, tx_data: selectedRoute })
 	} else {
 		swapDispatch({
 			type: 'APPEND_SWAP_STEP',
 			payload: { title: 'Transaction failed', body: 'Something went wrong', status: 'error' },
 		})
-
+		trackEvent({ category: category.SwapCard, action: action.SwapFailed, label: 'swap_failed', data: { provider: selectedRoute.provider, selectedRoute } })
 		logTxToDB({ tx_id: selectedRoute.id, status: 'failure', provider: selectedRoute.provider, tx_data: selectedRoute })
 	}
 
