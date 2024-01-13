@@ -12,7 +12,7 @@ export interface ReferralHistoryItem {
 
 export interface ReferralState {
 	id: string
-	referralCode: string
+	referralCode: string | null
 	activatedCode: string
 	rewards: ReferralReward[]
 	totalUsers: number

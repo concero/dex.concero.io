@@ -5,7 +5,8 @@ import { type ReferralState } from '../../components/screens/ReferralScreen/user
 export async function fetchReferralInfo(walletAddress: string): Promise<ReferralState | null> {
 	try {
 		const response = await get(config.baseURL + `/referrals?walletAddress=${walletAddress}`)
-		return response.data
+		if (!response.data.success) return null
+		return response.data.data
 	} catch (error) {
 		console.error(error)
 		return null
