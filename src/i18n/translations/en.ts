@@ -149,6 +149,9 @@ export const en = {
 			totalUsers: 'Total users',
 			topRefereesByVolume: 'Top referees by volume',
 			leaderBoard: 'Leaderboard',
+			earnOfUsersFees: 'Earn up to 5% of users fees',
+			withOurReferralProgramme: 'With our referral programme',
+			createReferralLink: 'Create referral link',
 		},
 	},
 }

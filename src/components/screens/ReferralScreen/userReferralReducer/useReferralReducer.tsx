@@ -2,25 +2,31 @@ import { type Dispatch, useReducer } from 'react'
 import { type ReferralAction, referralActionType, type ReferralState } from './types'
 
 const initialState: ReferralState = {
-	id: '',
-	referralCode: '',
-	activatedCode: '',
-	rewards: [],
-	totalUsers: 0,
-	history: [],
+	isReferralCreated: false,
+	data: null,
+	// data: {
+	// id: '',
+	// referralCode: '',
+	// activatedCode: '',
+	// rewards: [],
+	// totalUsers: 0,
+	// history: [],
+	// },
 }
 
 const referralReducer = (state: ReferralState, action: ReferralAction): ReferralState => {
 	switch (action.type) {
-		case referralActionType.populateReferralState:
+		case referralActionType.populateReferralStateData:
 			return {
 				...state,
-				id: action.state.id || '',
-				referralCode: action.state.referralCode || '',
-				activatedCode: action.state.activatedCode || '',
-				rewards: action.state.rewards || [],
-				totalUsers: action.state.totalUsers || 0,
-				history: action.state.history || [],
+				data: {
+					id: action.state.id || '',
+					referralCode: action.state.referralCode || '',
+					activatedCode: action.state.activatedCode || '',
+					rewards: action.state.rewards || [],
+					totalUsers: action.state.totalUsers || 0,
+					history: action.state.history || [],
+				},
 			}
 		default:
 			throw new Error(`Unhandled action type: ${action.type as string}`)

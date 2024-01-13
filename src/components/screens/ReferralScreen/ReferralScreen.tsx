@@ -13,6 +13,7 @@ import { populateReferralState } from './populateReferralState'
 import { useAccount } from 'wagmi'
 import { type ReferralReward } from './userReferralReducer/types'
 import { addingTokenDecimals } from '../../../utils/formatting'
+import { CreateReferralLinkPage } from './CreateReferralLinkPage/CreateReferralLinkPage'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
@@ -34,6 +35,8 @@ export function ReferralScreen() {
 		if (!address) return
 		populateReferralState(referralDispatch, '0x1234abcdef1234abcdef1234abcdef1234abcdef')
 	}, [address])
+
+	if (!referralState.isReferralCreated) return <CreateReferralLinkPage />
 
 	return (
 		<div className={classNames.container}>

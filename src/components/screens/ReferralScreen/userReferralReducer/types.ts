@@ -1,7 +1,7 @@
 import { type ReferralAccountInfo, type ReferralReward } from '../../../../api/concero/types'
 
 export enum referralActionType {
-	populateReferralState = 0,
+	populateReferralStateData = 0,
 }
 
 export interface ReferralHistoryItem {
@@ -11,15 +11,18 @@ export interface ReferralHistoryItem {
 }
 
 export interface ReferralState {
-	id: string
-	referralCode: string | null
-	activatedCode: string
-	rewards: ReferralReward[]
-	totalUsers: number
-	history: ReferralHistoryItem[]
+	isReferralCreated: boolean
+	data: {
+		id: string
+		referralCode: string | null
+		activatedCode: string
+		rewards: ReferralReward[]
+		totalUsers: number
+		history: ReferralHistoryItem[]
+	} | null
 }
 
 export interface ReferralAction {
-	type: referralActionType.populateReferralState
+	type: referralActionType.populateReferralStateData
 	state: ReferralAccountInfo
 }
