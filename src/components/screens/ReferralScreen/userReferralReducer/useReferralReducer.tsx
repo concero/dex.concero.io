@@ -18,7 +18,7 @@ const referralReducer = (state: ReferralState, action: ReferralAction): Referral
 	switch (action.type) {
 		case referralActionType.populateReferralStateData:
 			return {
-				...state,
+				isReferralCreated: true,
 				data: {
 					id: action.state.id || '',
 					referralCode: action.state.referralCode || '',

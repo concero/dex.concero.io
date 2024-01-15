@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '../../../buttons/Button/Button'
 import { IconArrowsDiff } from '@tabler/icons-react'
 import referralScreen from '../../../../assets/images/referral/referralScreen.png'
+import { useState } from 'react'
 
 export function CreateReferralLinkPage() {
+	const [isCreateReferralLinkModalOpen, setIsCreateReferralLinkModalOpen] = useState(false)
 	const { t } = useTranslation()
 
 	return (

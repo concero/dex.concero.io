@@ -12,14 +12,16 @@ export interface ReferralHistoryItem {
 
 export interface ReferralState {
 	isReferralCreated: boolean
-	data: {
-		id: string
-		referralCode: string | null
-		activatedCode: string
-		rewards: ReferralReward[]
-		totalUsers: number
-		history: ReferralHistoryItem[]
-	} | null
+	data: ReferralAccountInfo | null
+}
+
+export interface ReferralAccountData {
+	id: string
+	referralCode: string | null
+	activatedCode: string
+	rewards: ReferralReward[]
+	totalUsers: number
+	history: ReferralHistoryItem[]
 }
 
 export interface ReferralAction {

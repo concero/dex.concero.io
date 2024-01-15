@@ -1,18 +1,23 @@
+import classNames from './ReferralHistoryCard.module.pcss'
 import { CardHeader } from '../CardHeader/CardHeader'
 import { useTranslation } from 'react-i18next'
 import { Table } from '../../layout/Table/Table'
-import classNames from './ReferralHistoryCard.module.pcss'
 import { IconUser } from '@tabler/icons-react'
-import { type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 import { unixtimeFromNow } from '../../../utils/formatting'
+import { type ReferralAccountInfo } from '../../../api/concero/types'
+import { type JSXElementConstructor, type ReactElement, type ReactNode, type ReactPortal } from 'react'
 
 interface ReferralHistoryCardProps {
-	referralState: ReferralState
+	referralStateData: ReferralAccountInfo | null
 }
 
 const columns = [
 	{
-		cellComponent: item => (
+		cellComponent: (item: {
+			title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | Iterable<ReactNode> | null | undefined
+			timestamp: number
+			body: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactPortal | Iterable<ReactNode> | null | undefined
+		}) => (
 			<div className={classNames.itemContainer}>
 				<div className={classNames.headerContainer}>
 					<div className={classNames.rowContainer}>
@@ -27,13 +32,13 @@ const columns = [
 	},
 ]
 
-export function ReferralHistoryCard({ referralState }: ReferralHistoryCardProps) {
+export function ReferralHistoryCard({ referralStateData }: ReferralHistoryCardProps) {
 	const { t } = useTranslation()
-	console.log(referralState)
+
 	return (
 		<div className={`card`}>
 			<CardHeader title={t('referralHistoryCard.title')} />
-			<Table columns={columns} items={referralState.history} />
+			<Table columns={columns} items={referralStateData?.history ?? []} />
 		</div>
 	)
 }

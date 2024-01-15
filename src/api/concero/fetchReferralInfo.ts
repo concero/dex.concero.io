@@ -1,8 +1,8 @@
 import { get } from '../client'
 import { config } from '../../constants/config'
-import { type ReferralState } from '../../components/screens/ReferralScreen/userReferralReducer/types'
+import { type ReferralAccountInfo } from './types'
 
-export async function fetchReferralInfo(walletAddress: string): Promise<ReferralState | null> {
+export async function fetchReferralInfo(walletAddress: string): Promise<ReferralAccountInfo | null> {
 	try {
 		const response = await get(config.baseURL + `/referrals?walletAddress=${walletAddress}`)
 		if (!response.data.success) return null

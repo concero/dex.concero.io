@@ -1,8 +1,8 @@
 import { CardHeader } from '../CardHeader/CardHeader'
 import { useTranslation } from 'react-i18next'
+import { type ReferralAccountInfo, type ReferralReward } from '../../../api/concero/types'
 import { RechartsBarChart } from '../../layout/RechartsBarChart/RechartsBarChart'
 import { colors } from '../../../constants/colors'
-import { type ReferralReward, type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 import { addingTokenDecimals } from '../../../utils/formatting'
 
 const barColors = [
@@ -18,12 +18,12 @@ const barColors = [
 ]
 
 interface EarningBreakDownCardProps {
-	referralState: ReferralState
+	referralStateData: ReferralAccountInfo | null
 }
 
-export function EarningBreakDownCard({ referralState }: EarningBreakDownCardProps) {
+export function EarningBreakDownCard({ referralStateData }: EarningBreakDownCardProps) {
 	const { t } = useTranslation()
-	const data = referralState.rewards?.map((reward: ReferralReward) => {
+	const data = referralStateData?.rewards?.map((reward: ReferralReward) => {
 		return {
 			name: reward.symbol,
 			amount: Number(addingTokenDecimals(reward.reservedAmount, reward.decimals)),
@@ -33,7 +33,7 @@ export function EarningBreakDownCard({ referralState }: EarningBreakDownCardProp
 	return (
 		<div className={`card`}>
 			<CardHeader title={t('earningsBreakDownCard.title')} />
-			<RechartsBarChart data={data} barColors={barColors} />
+			{data ? <RechartsBarChart data={data} barColors={barColors} /> : null}
 		</div>
 	)
 }

@@ -11,17 +11,17 @@ import { useReferralReducer } from './userReferralReducer/useReferralReducer'
 import { useEffect } from 'react'
 import { populateReferralState } from './populateReferralState'
 import { useAccount } from 'wagmi'
-import { type ReferralReward } from './userReferralReducer/types'
 import { addingTokenDecimals } from '../../../utils/formatting'
 import { CreateReferralLinkPage } from './CreateReferralLinkPage/CreateReferralLinkPage'
+import { type ReferralReward } from '../../../api/concero/types'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
 	const { address } = useAccount()
 	const [referralState, referralDispatch] = useReferralReducer()
 
-	const getTotalEarnings = (reward: ReferralReward[]) => {
-		if (!reward.length) return 0
+	const getTotalEarnings = (reward: ReferralReward[] | undefined) => {
+		if (!reward?.length) return 0
 		let total = 0
 
 		reward.forEach((reward: ReferralReward) => {
@@ -33,7 +33,7 @@ export function ReferralScreen() {
 
 	useEffect(() => {
 		if (!address) return
-		populateReferralState(referralDispatch, '0x1234abcdef1234abcdef1234abcdef1234abcdef')
+		void populateReferralState(referralDispatch, '0x23EC48b9329c02E846Ea1e361eA0b4ec40733bB6')
 	}, [address])
 
 	if (!referralState.isReferralCreated) return <CreateReferralLinkPage />
@@ -42,14 +42,14 @@ export function ReferralScreen() {
 		<div className={classNames.container}>
 			<div className={classNames.mainStack}>
 				<EarningsTimelineCard />
-				<EarningBreakDownCard referralState={referralState} />
-				<ReferralHistoryCard referralState={referralState} />
+				<EarningBreakDownCard referralStateData={referralState.data} />
+				<ReferralHistoryCard referralStateData={referralState.data} />
 			</div>
 			<div className={classNames.secondaryStack}>
-				<ReferralRewardsCard referralState={referralState} />
+				<ReferralRewardsCard referralStateData={referralState.data} />
 				<VolumeCard title={t('referral.refereeTradingVolume')} value={'$350,050'} />
-				<VolumeCard title={t('referral.totalEarnings')} value={getTotalEarnings(referralState.rewards)} />
-				<VolumeCard title={t('referral.totalUsers')} value={referralState.totalUsers} />
+				<VolumeCard title={t('referral.totalEarnings')} value={getTotalEarnings(referralState.data?.rewards)} />
+				<VolumeCard title={t('referral.totalUsers')} value={referralState.data?.totalUsers ?? 0} />
 				<TotalRefereesCard />
 				<LeaderBoardCard />
 			</div>
