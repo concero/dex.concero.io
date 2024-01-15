@@ -8,17 +8,19 @@ import { ReferralRewardsCard } from '../../cards/ReferralRewardsCard/ReferralRew
 import { TotalRefereesCard } from '../../cards/TotalRefereesCard/TotalRefereesCard'
 import { LeaderBoardCard } from '../../cards/LeaderBoardCard/LeaderBoardCard'
 import { useReferralReducer } from './userReferralReducer/useReferralReducer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { populateReferralState } from './populateReferralState'
 import { useAccount } from 'wagmi'
 import { addingTokenDecimals } from '../../../utils/formatting'
-import { CreateReferralLinkPage } from './CreateReferralLinkPage/CreateReferralLinkPage'
+import { UnauthorizedReferralPage } from './CreateReferralLinkPage/UnauthorizedReferralPage'
 import { type ReferralReward } from '../../../api/concero/types'
+import { CreateReferralLinkModal } from './CreateReferralLinkPage/CreateReferralLinkModal/CreateReferralLinkModal'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
-	const { address } = useAccount()
+	const { address, isDisconnected } = useAccount()
 	const [referralState, referralDispatch] = useReferralReducer()
+	const [isCreateReferralLinkModalOpen, setIsCreateReferralLinkModalOpen] = useState(false)
 
 	const getTotalEarnings = (reward: ReferralReward[] | undefined) => {
 		if (!reward?.length) return 0
@@ -33,14 +35,35 @@ export function ReferralScreen() {
 
 	useEffect(() => {
 		if (!address) return
-		void populateReferralState(referralDispatch, address)
+		void populateReferralState(referralDispatch, '0x23EC48b9329c02E846Ea1e361eA0b4ec40733bB6')
 	}, [address])
 
-	if (!referralState.isReferralCreated) {
-		return <CreateReferralLinkPage />
-	}
+	const disconnectWalletReferralScreen = (
+		<UnauthorizedReferralPage
+			title={t('referral.welcomeBack')}
+			body={t('referral.connectYourWalletToView')}
+			onClick={() => {
+				setIsCreateReferralLinkModalOpen(true)
+			}}
+			buttonText={t('walletButton.connectWallet')}
+		/>
+	)
 
-	return (
+	const unauthorizedReferralScreen = (
+		<>
+			<UnauthorizedReferralPage
+				title={t('referral.earnOfUsersFees')}
+				body={t('referral.withOurReferralProgramme')}
+				onClick={() => {
+					setIsCreateReferralLinkModalOpen(true)
+				}}
+				buttonText={t('referral.createReferralLink')}
+			/>
+			<CreateReferralLinkModal isOpen={isCreateReferralLinkModalOpen} setIsOpen={setIsCreateReferralLinkModalOpen} />
+		</>
+	)
+
+	const referralScreen = (
 		<div className={classNames.container}>
 			<div className={classNames.mainStack}>
 				<EarningsTimelineCard />
@@ -57,4 +80,12 @@ export function ReferralScreen() {
 			</div>
 		</div>
 	)
+
+	if (isDisconnected) {
+		return disconnectWalletReferralScreen
+	} else if (!referralState.isReferralCreated) {
+		return unauthorizedReferralScreen
+	} else {
+		return referralScreen
+	}
 }

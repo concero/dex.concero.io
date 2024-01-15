@@ -8,7 +8,9 @@ import { useAccount } from 'wagmi'
 import posthog from 'posthog-js'
 
 const SwapScreen = lazy(async () => await import('./components/screens/SwapScreen/SwapScreen').then(module => ({ default: module.SwapScreen })))
-const PortfolioScreen = lazy(async () => await import('./components/screens/PortfolioScreen/PortfolioScreen').then(module => ({ default: module.PortfolioScreen })))
+const PortfolioScreen = lazy(
+	async () => await import('./components/screens/PortfolioScreen/PortfolioScreen').then(module => ({ default: module.PortfolioScreen })),
+)
 const ReferralScreen = lazy(async () => await import('./components/screens/ReferralScreen/ReferralScreen').then(module => ({ default: module.ReferralScreen })))
 const EarnScreen = lazy(async () => await import('./components/screens/EarnScreen/EarnScreen').then(module => ({ default: module.EarnScreen })))
 

@@ -101,7 +101,12 @@ export function ManageModal({ isOpen, setIsOpen, earnState }: ManageModalProps) 
 							<Button size="sm" variant={swapType === SwapType.stake ? 'primary' : 'subtle'} onClick={setStakeType}>
 								{t('button.stake')}
 							</Button>
-							<Button size="sm" variant={swapType === SwapType.withdraw ? 'primary' : 'subtle'} onClick={setWithdrawType} isDisabled={!earnState.selectedVault?.stakedAmount}>
+							<Button
+								size="sm"
+								variant={swapType === SwapType.withdraw ? 'primary' : 'subtle'}
+								onClick={setWithdrawType}
+								isDisabled={!earnState.selectedVault?.stakedAmount}
+							>
 								{t('button.withdraw')}
 							</Button>
 						</div>

@@ -15,7 +15,7 @@ interface ReferralRewardsCardProps {
 
 export function ReferralRewardsCard({ referralStateData }: ReferralRewardsCardProps) {
 	const { t } = useTranslation()
-	const { rewards } = referralStateData
+	const rewards = referralStateData?.rewards ?? null
 	const { switchNetworkAsync } = useSwitchNetwork()
 
 	const handleClaimClick = async () => {

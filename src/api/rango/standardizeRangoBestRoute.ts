@@ -12,7 +12,8 @@ function getSteps(route: BestRouteResponse): Step[] | null {
 }
 
 function getTotalGasUsd(route: BestRouteResponse): string | null {
-	const reduceSwaps = (res: number, swap: SwapResult): number => swap.fee.reduce((feeRes: number, feeItem: SwapFee): number => parseFloat(feeItem.amount) + feeRes, 0) + res
+	const reduceSwaps = (res: number, swap: SwapResult): number =>
+		swap.fee.reduce((feeRes: number, feeItem: SwapFee): number => parseFloat(feeItem.amount) + feeRes, 0) + res
 	return roundNumberByDecimals(new BigNumber(route.result?.swaps.reduce(reduceSwaps, 0) ?? 0).times(route.result?.swaps[0]?.from.usdPrice ?? 0).toString(), 2)
 }
 

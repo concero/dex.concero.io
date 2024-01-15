@@ -54,7 +54,12 @@ export const swapActions: SwapAction = {
 		return { ...state, stage: action.payload }
 	},
 	TOGGLE_SETTINGS_MODAL_OPEN: state => {
-		trackEvent({ category: trackingCategory.SwapCard, action: trackingAction.ToggleSettingsModal, label: 'toggle_settings_modal_open', data: { isOpen: !state.settingsModalOpen } })
+		trackEvent({
+			category: trackingCategory.SwapCard,
+			action: trackingAction.ToggleSettingsModal,
+			label: 'toggle_settings_modal_open',
+			data: { isOpen: !state.settingsModalOpen },
+		})
 		return { ...state, settingsModalOpen: !state.settingsModalOpen }
 	},
 	SET_SETTINGS: (state, action) => {

@@ -22,7 +22,14 @@ interface HandleSwapProps {
 	getSigner: () => Promise<providers.JsonRpcSigner>
 }
 
-export const handleSwap = async ({ swapState, swapDispatch, address, switchChainHook, getChainByProviderSymbol, getSigner }: HandleSwapProps): Promise<void> => {
+export const handleSwap = async ({
+	swapState,
+	swapDispatch,
+	address,
+	switchChainHook,
+	getChainByProviderSymbol,
+	getSigner,
+}: HandleSwapProps): Promise<void> => {
 	const { from, settings, selectedRoute } = swapState
 	const { originalRoute, provider } = selectedRoute
 

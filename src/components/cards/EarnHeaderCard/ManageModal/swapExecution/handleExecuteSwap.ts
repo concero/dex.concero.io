@@ -12,7 +12,11 @@ import { approveToken, checkIsApproveNeeded, handleError } from './helpers'
 
 type SwitchChainNetwork = (chainId_?: SwitchNetworkArgs['chainId']) => Promise<SwitchNetworkResult>
 
-export async function handleExecuteSwap(manageState: ManageState, manageDispatch: Dispatch<ManageAction>, switchNetworkAsync: SwitchChainNetwork): Promise<void> {
+export async function handleExecuteSwap(
+	manageState: ManageState,
+	manageDispatch: Dispatch<ManageAction>,
+	switchNetworkAsync: SwitchChainNetwork,
+): Promise<void> {
 	manageDispatch({ type: 'SET_LOADING', payload: true })
 	manageDispatch({ type: 'SET_MODAL_TYPE', payload: ModalType.progress })
 	manageDispatch({ type: 'PUSH_STEP', step: { title: 'Fetching transaction data', status: 'pending' } })

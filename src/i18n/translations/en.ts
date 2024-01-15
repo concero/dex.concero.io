@@ -157,6 +157,8 @@ export const en = {
 			orCreateCustomLink: 'or create a custom link',
 			createCustomLink: 'Create custom link',
 			enterYourLink: 'Enter your link',
+			welcomeBack: 'Welcome back!',
+			connectYourWalletToView: 'Connect your wallet to view your referral dashboard.',
 		},
 	},
 }

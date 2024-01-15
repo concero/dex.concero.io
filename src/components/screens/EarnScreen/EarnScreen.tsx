@@ -36,7 +36,9 @@ export const EarnScreen: FC = () => {
 	)
 
 	const mobileLayout = (
-		<div className={classNames.container}>{earnState.selectedVault ? mobileVaultDetails : <EarnOpportunitiesCard earnState={earnState} earnDispatch={earnDispatch} />}</div>
+		<div className={classNames.container}>
+			{earnState.selectedVault ? mobileVaultDetails : <EarnOpportunitiesCard earnState={earnState} earnDispatch={earnDispatch} />}
+		</div>
 	)
 
 	const ipadVaultDetails = (

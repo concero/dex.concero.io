@@ -1,8 +1,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-SemiBold.eot');
-	src: local('Axiforma SemiBold'), local('Axiforma-SemiBold'), url('Axiforma-SemiBold.eot?#iefix') format('embedded-opentype'), url('Axiforma-SemiBold.woff2') format('woff2'),
-		url('Axiforma-SemiBold.woff') format('woff'), url('Axiforma-SemiBold.ttf') format('truetype');
+	src: local('Axiforma SemiBold'), local('Axiforma-SemiBold'), url('Axiforma-SemiBold.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-SemiBold.woff2') format('woff2'), url('Axiforma-SemiBold.woff') format('woff'), url('Axiforma-SemiBold.ttf') format('truetype');
 	font-weight: 600;
 	font-style: normal;
 }
@@ -19,8 +19,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Regular.eot');
-	src: local('Axiforma Regular'), local('Axiforma-Regular'), url('Axiforma-Regular.eot?#iefix') format('embedded-opentype'), url('Axiforma-Regular.woff2') format('woff2'),
-		url('Axiforma-Regular.woff') format('woff'), url('Axiforma-Regular.ttf') format('truetype');
+	src: local('Axiforma Regular'), local('Axiforma-Regular'), url('Axiforma-Regular.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Regular.woff2') format('woff2'), url('Axiforma-Regular.woff') format('woff'), url('Axiforma-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -37,8 +37,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Black.eot');
-	src: local('Axiforma Black'), local('Axiforma-Black'), url('Axiforma-Black.eot?#iefix') format('embedded-opentype'), url('Axiforma-Black.woff2') format('woff2'),
-		url('Axiforma-Black.woff') format('woff'), url('Axiforma-Black.ttf') format('truetype');
+	src: local('Axiforma Black'), local('Axiforma-Black'), url('Axiforma-Black.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Black.woff2') format('woff2'), url('Axiforma-Black.woff') format('woff'), url('Axiforma-Black.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
 }
@@ -55,8 +55,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Heavy.eot');
-	src: local('Axiforma Heavy'), local('Axiforma-Heavy'), url('Axiforma-Heavy.eot?#iefix') format('embedded-opentype'), url('Axiforma-Heavy.woff2') format('woff2'),
-		url('Axiforma-Heavy.woff') format('woff'), url('Axiforma-Heavy.ttf') format('truetype');
+	src: local('Axiforma Heavy'), local('Axiforma-Heavy'), url('Axiforma-Heavy.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Heavy.woff2') format('woff2'), url('Axiforma-Heavy.woff') format('woff'), url('Axiforma-Heavy.ttf') format('truetype');
 	font-weight: 900;
 	font-style: normal;
 }
@@ -64,8 +64,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Medium.eot');
-	src: local('Axiforma Medium'), local('Axiforma-Medium'), url('Axiforma-Medium.eot?#iefix') format('embedded-opentype'), url('Axiforma-Medium.woff2') format('woff2'),
-		url('Axiforma-Medium.woff') format('woff'), url('Axiforma-Medium.ttf') format('truetype');
+	src: local('Axiforma Medium'), local('Axiforma-Medium'), url('Axiforma-Medium.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Medium.woff2') format('woff2'), url('Axiforma-Medium.woff') format('woff'), url('Axiforma-Medium.ttf') format('truetype');
 	font-weight: 500;
 	font-style: normal;
 }
@@ -83,7 +83,8 @@
 	font-family: 'Axiforma';
 	src: url('Axiforma-ExtraBoldItalic.eot');
 	src: local('Axiforma ExtraBold Italic'), local('Axiforma-ExtraBoldItalic'), url('Axiforma-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('Axiforma-ExtraBoldItalic.woff2') format('woff2'), url('Axiforma-ExtraBoldItalic.woff') format('woff'), url('Axiforma-ExtraBoldItalic.ttf') format('truetype');
+		url('Axiforma-ExtraBoldItalic.woff2') format('woff2'), url('Axiforma-ExtraBoldItalic.woff') format('woff'),
+		url('Axiforma-ExtraBoldItalic.ttf') format('truetype');
 	font-weight: 800;
 	font-style: italic;
 }
@@ -100,8 +101,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Light.eot');
-	src: local('Axiforma Light'), local('Axiforma-Light'), url('Axiforma-Light.eot?#iefix') format('embedded-opentype'), url('Axiforma-Light.woff2') format('woff2'),
-		url('Axiforma-Light.woff') format('woff'), url('Axiforma-Light.ttf') format('truetype');
+	src: local('Axiforma Light'), local('Axiforma-Light'), url('Axiforma-Light.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Light.woff2') format('woff2'), url('Axiforma-Light.woff') format('woff'), url('Axiforma-Light.ttf') format('truetype');
 	font-weight: 300;
 	font-style: normal;
 }
@@ -137,7 +138,8 @@
 	font-family: 'Axiforma';
 	src: url('Axiforma-SemiBoldItalic.eot');
 	src: local('Axiforma SemiBold Italic'), local('Axiforma-SemiBoldItalic'), url('Axiforma-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
-		url('Axiforma-SemiBoldItalic.woff2') format('woff2'), url('Axiforma-SemiBoldItalic.woff') format('woff'), url('Axiforma-SemiBoldItalic.ttf') format('truetype');
+		url('Axiforma-SemiBoldItalic.woff2') format('woff2'), url('Axiforma-SemiBoldItalic.woff') format('woff'),
+		url('Axiforma-SemiBoldItalic.ttf') format('truetype');
 	font-weight: 600;
 	font-style: italic;
 }
@@ -145,8 +147,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-Italic.eot');
-	src: local('Axiforma Italic'), local('Axiforma-Italic'), url('Axiforma-Italic.eot?#iefix') format('embedded-opentype'), url('Axiforma-Italic.woff2') format('woff2'),
-		url('Axiforma-Italic.woff') format('woff'), url('Axiforma-Italic.ttf') format('truetype');
+	src: local('Axiforma Italic'), local('Axiforma-Italic'), url('Axiforma-Italic.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-Italic.woff2') format('woff2'), url('Axiforma-Italic.woff') format('woff'), url('Axiforma-Italic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: italic;
 }
@@ -163,8 +165,8 @@
 @font-face {
 	font-family: 'Axiforma';
 	src: url('Axiforma-ExtraBold.eot');
-	src: local('Axiforma ExtraBold'), local('Axiforma-ExtraBold'), url('Axiforma-ExtraBold.eot?#iefix') format('embedded-opentype'), url('Axiforma-ExtraBold.woff2') format('woff2'),
-		url('Axiforma-ExtraBold.woff') format('woff'), url('Axiforma-ExtraBold.ttf') format('truetype');
+	src: local('Axiforma ExtraBold'), local('Axiforma-ExtraBold'), url('Axiforma-ExtraBold.eot?#iefix') format('embedded-opentype'),
+		url('Axiforma-ExtraBold.woff2') format('woff2'), url('Axiforma-ExtraBold.woff') format('woff'), url('Axiforma-ExtraBold.ttf') format('truetype');
 	font-weight: 800;
 	font-style: normal;
 }

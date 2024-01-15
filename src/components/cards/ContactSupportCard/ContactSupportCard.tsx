@@ -51,7 +51,12 @@ export function ContactSupportCard({ infoToCopy, handleGoBackClick }: ContactSup
 					>
 						{t('socialMedia.discord')}
 					</Button>
-					<Button leftIcon={<IconMail size={16} />} className={classNames.f1} variant="secondary" onClick={() => window.open('mailto:Concerocrypto@gmail.com', '_blank')}>
+					<Button
+						leftIcon={<IconMail size={16} />}
+						className={classNames.f1}
+						variant="secondary"
+						onClick={() => window.open('mailto:Concerocrypto@gmail.com', '_blank')}
+					>
 						{t('socialMedia.email')}
 					</Button>
 				</div>

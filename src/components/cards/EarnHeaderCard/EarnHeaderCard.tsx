@@ -51,7 +51,9 @@ export const EarnHeaderCard: FC<EarnHeaderCardProps> = ({ earnState, earnDispatc
 	return (
 		<>
 			<div className={classNames.wrapper}>
-				{isIpad ? <Button variant={'subtle'} leftIcon={<IconChevronLeft />} className={stakedAmount ? classNames.backButton : ''} onClick={handleGoBackButtonClick} /> : null}
+				{isIpad ? (
+					<Button variant={'subtle'} leftIcon={<IconChevronLeft />} className={stakedAmount ? classNames.backButton : ''} onClick={handleGoBackButtonClick} />
+				) : null}
 				<div className={classNames.innerContainer}>
 					<div className={`card ${classNames.container} ${stakedAmount ? classNames.staked : ''}`}>
 						<div className={classNames.headerContainer}>
