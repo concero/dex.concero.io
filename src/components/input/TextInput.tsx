@@ -5,7 +5,7 @@ export interface TextInputProps {
 	value?: string
 	placeholder: string
 	onChangeText?: (value: string) => void
-	icon: ReactNode
+	icon?: ReactNode
 	variant?: 'default' | 'inline'
 	isDisabled?: boolean
 	title?: string

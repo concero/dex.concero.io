@@ -152,6 +152,11 @@ export const en = {
 			earnOfUsersFees: 'Earn up to 5% of users fees',
 			withOurReferralProgramme: 'With our referral programme',
 			createReferralLink: 'Create referral link',
+			createLink: 'Create link',
+			getRandomLink: 'Get a random link',
+			orCreateCustomLink: 'or create a custom link',
+			createCustomLink: 'Create custom link',
+			enterYourLink: 'Enter your link',
 		},
 	},
 }

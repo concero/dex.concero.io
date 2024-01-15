@@ -347,3 +347,9 @@ button {
 .cardHeaderTitle {
 	color: var(--color-grey-500);
 }
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

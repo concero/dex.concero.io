@@ -33,10 +33,12 @@ export function ReferralScreen() {
 
 	useEffect(() => {
 		if (!address) return
-		void populateReferralState(referralDispatch, '0x23EC48b9329c02E846Ea1e361eA0b4ec40733bB6')
+		void populateReferralState(referralDispatch, address)
 	}, [address])
 
-	if (!referralState.isReferralCreated) return <CreateReferralLinkPage />
+	if (!referralState.isReferralCreated) {
+		return <CreateReferralLinkPage />
+	}
 
 	return (
 		<div className={classNames.container}>
