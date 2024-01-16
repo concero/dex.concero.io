@@ -15,12 +15,15 @@ import { addingTokenDecimals } from '../../../utils/formatting'
 import { UnauthorizedReferralPage } from './CreateReferralLinkPage/UnauthorizedReferralPage'
 import { type ReferralReward } from '../../../api/concero/types'
 import { CreateReferralLinkModal } from './CreateReferralLinkPage/CreateReferralLinkModal/CreateReferralLinkModal'
+import { useWeb3Modal } from '@web3modal/react'
+import { FullScreenLoader } from '../../layout/FullScreenLoader/FullScreenLoader'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
-	const { address, isDisconnected } = useAccount()
+	const { address, isConnected } = useAccount()
 	const [referralState, referralDispatch] = useReferralReducer()
 	const [isCreateReferralLinkModalOpen, setIsCreateReferralLinkModalOpen] = useState(false)
+	const { open } = useWeb3Modal()
 
 	const getTotalEarnings = (reward: ReferralReward[] | undefined) => {
 		if (!reward?.length) return 0
@@ -34,8 +37,7 @@ export function ReferralScreen() {
 	}
 
 	useEffect(() => {
-		if (!address) return
-		void populateReferralState(referralDispatch, '0x23EC48b9329c02E846Ea1e361eA0b4ec40733bB6')
+		void populateReferralState(referralDispatch, address)
 	}, [address])
 
 	const disconnectWalletReferralScreen = (
@@ -43,7 +45,7 @@ export function ReferralScreen() {
 			title={t('referral.welcomeBack')}
 			body={t('referral.connectYourWalletToView')}
 			onClick={() => {
-				setIsCreateReferralLinkModalOpen(true)
+				void open()
 			}}
 			buttonText={t('walletButton.connectWallet')}
 		/>
@@ -81,7 +83,9 @@ export function ReferralScreen() {
 		</div>
 	)
 
-	if (isDisconnected) {
+	if (referralState.isLoading) {
+		return <FullScreenLoader />
+	} else if (!isConnected) {
 		return disconnectWalletReferralScreen
 	} else if (!referralState.isReferralCreated) {
 		return unauthorizedReferralScreen

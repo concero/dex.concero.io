@@ -4,6 +4,8 @@ import { type ReferralAccountInfo, type ReferralReward } from '../../../api/conc
 import { RechartsBarChart } from '../../layout/RechartsBarChart/RechartsBarChart'
 import { colors } from '../../../constants/colors'
 import { addingTokenDecimals } from '../../../utils/formatting'
+import { EmptyCard } from '../EmptyCard/EmptyCard'
+import chart from '../../../assets/images/referral/chart.png'
 
 const barColors = [
 	colors.green.dark,
@@ -30,10 +32,14 @@ export function EarningBreakDownCard({ referralStateData }: EarningBreakDownCard
 		}
 	})
 
-	return (
-		<div className={`card`}>
-			<CardHeader title={t('earningsBreakDownCard.title')} />
-			{data ? <RechartsBarChart data={data} barColors={barColors} /> : null}
-		</div>
-	)
+	if (data?.length) {
+		return (
+			<div className={`card`}>
+				<CardHeader title={t('earningsBreakDownCard.title')} />
+				{data ? <RechartsBarChart data={data} barColors={barColors} /> : null}
+			</div>
+		)
+	} else {
+		return <EmptyCard srcImg={chart} title={t('referral.noRewardsTimeline')} />
+	}
 }

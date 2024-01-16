@@ -6,6 +6,8 @@ import { IconUser } from '@tabler/icons-react'
 import { unixtimeFromNow } from '../../../utils/formatting'
 import { type ReferralAccountInfo } from '../../../api/concero/types'
 import { type JSXElementConstructor, type ReactElement, type ReactNode, type ReactPortal } from 'react'
+import { EmptyCard } from '../EmptyCard/EmptyCard'
+import historyImg from '../../../assets/images/referral/history.png'
 
 interface ReferralHistoryCardProps {
 	referralStateData: ReferralAccountInfo | null
@@ -35,10 +37,14 @@ const columns = [
 export function ReferralHistoryCard({ referralStateData }: ReferralHistoryCardProps) {
 	const { t } = useTranslation()
 
-	return (
-		<div className={`card`}>
-			<CardHeader title={t('referralHistoryCard.title')} />
-			<Table columns={columns} items={referralStateData?.history ?? []} />
-		</div>
-	)
+	if (referralStateData?.history.length) {
+		return (
+			<div className={`card`}>
+				<CardHeader title={t('referralHistoryCard.title')} />
+				<Table columns={columns} items={referralStateData.history} />
+			</div>
+		)
+	} else {
+		return <EmptyCard srcImg={historyImg} title={t('referral.noHistoryAvailable')} />
+	}
 }

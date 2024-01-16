@@ -1,5 +1,5 @@
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
-import { configureChains, createConfig } from 'wagmi'
+import { createConfig } from 'wagmi'
 import {
 	arbitrum,
 	aurora,
@@ -22,6 +22,7 @@ import {
 	polygonZkEvm,
 	zkSync,
 } from 'viem/chains'
+import { configureChains } from '@wagmi/core'
 
 export const projectId = process.env.WEB3_MODAL_PROJECT_ID
 export const chains = [

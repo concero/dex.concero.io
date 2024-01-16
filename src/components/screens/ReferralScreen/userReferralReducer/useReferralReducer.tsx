@@ -3,21 +3,15 @@ import { type ReferralAction, referralActionType, type ReferralState } from './t
 
 const initialState: ReferralState = {
 	isReferralCreated: false,
+	isLoading: true,
 	data: null,
-	// data: {
-	// id: '',
-	// referralCode: '',
-	// activatedCode: '',
-	// rewards: [],
-	// totalUsers: 0,
-	// history: [],
-	// },
 }
 
 const referralReducer = (state: ReferralState, action: ReferralAction): ReferralState => {
 	switch (action.type) {
 		case referralActionType.populateReferralStateData:
 			return {
+				...state,
 				isReferralCreated: true,
 				data: {
 					id: action.state.id || '',
@@ -27,6 +21,11 @@ const referralReducer = (state: ReferralState, action: ReferralAction): Referral
 					totalUsers: action.state.totalUsers || 0,
 					history: action.state.history || [],
 				},
+			}
+		case referralActionType.setLoading:
+			return {
+				...state,
+				isLoading: action.state,
 			}
 		default:
 			throw new Error(`Unhandled action type: ${action.type as string}`)

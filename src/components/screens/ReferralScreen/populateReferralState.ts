@@ -2,8 +2,9 @@ import { type ReferralAction, referralActionType } from './userReferralReducer/t
 import { type Dispatch } from 'react'
 import { fetchReferralInfo } from '../../../api/concero/fetchReferralInfo'
 
-export async function populateReferralState(referralDispatch: Dispatch<ReferralAction>, walletAddress: string) {
+export async function populateReferralState(referralDispatch: Dispatch<ReferralAction>, walletAddress: string | undefined) {
 	try {
+		if (!walletAddress) return
 		const referralAccountInfo = await fetchReferralInfo(walletAddress)
 		if (!referralAccountInfo) {
 			return
@@ -11,5 +12,7 @@ export async function populateReferralState(referralDispatch: Dispatch<ReferralA
 		referralDispatch({ type: referralActionType.populateReferralStateData, state: referralAccountInfo })
 	} catch (error) {
 		console.error(error)
+	} finally {
+		referralDispatch({ type: referralActionType.setLoading, state: false })
 	}
 }

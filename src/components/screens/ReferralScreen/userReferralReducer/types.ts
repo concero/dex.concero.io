@@ -2,17 +2,13 @@ import { type ReferralAccountInfo, type ReferralReward } from '../../../../api/c
 
 export enum referralActionType {
 	populateReferralStateData = 0,
+	setLoading = 1,
 }
 
 export interface ReferralHistoryItem {
 	title: string
 	body: string
 	timestamp: string
-}
-
-export interface ReferralState {
-	isReferralCreated: boolean
-	data: ReferralAccountInfo | null
 }
 
 export interface ReferralAccountData {
@@ -24,7 +20,18 @@ export interface ReferralAccountData {
 	history: ReferralHistoryItem[]
 }
 
-export interface ReferralAction {
-	type: referralActionType.populateReferralStateData
-	state: ReferralAccountInfo
+export interface ReferralState {
+	isReferralCreated: boolean
+	isLoading: boolean
+	data: ReferralAccountInfo | null
 }
+
+export type ReferralAction =
+	| {
+			type: referralActionType.populateReferralStateData
+			state: ReferralAccountInfo
+	  }
+	| {
+			type: referralActionType.setLoading
+			state: boolean
+	  }
