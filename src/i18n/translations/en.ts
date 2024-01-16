@@ -161,6 +161,7 @@ export const en = {
 			connectYourWalletToView: 'Connect your wallet to view your referral dashboard.',
 			noRewardsTimeline: 'No rewards timeline available yet',
 			noHistoryAvailable: 'No history available yet',
+			copyInviteLink: 'Copy invite link',
 		},
 	},
 }

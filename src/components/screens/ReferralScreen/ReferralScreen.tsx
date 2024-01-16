@@ -17,6 +17,7 @@ import { type ReferralReward } from '../../../api/concero/types'
 import { CreateReferralLinkModal } from './CreateReferralLinkPage/CreateReferralLinkModal/CreateReferralLinkModal'
 import { useWeb3Modal } from '@web3modal/react'
 import { FullScreenLoader } from '../../layout/FullScreenLoader/FullScreenLoader'
+import { TotalInvitedUsersCard } from '../../cards/TotalInvitedUsersCard/TotalInvitedUsersCard'
 
 export function ReferralScreen() {
 	const { t } = useTranslation()
@@ -73,10 +74,11 @@ export function ReferralScreen() {
 				<ReferralHistoryCard referralStateData={referralState.data} />
 			</div>
 			<div className={classNames.secondaryStack}>
+				<TotalInvitedUsersCard referralState={referralState} />
 				<ReferralRewardsCard referralStateData={referralState.data} />
 				<VolumeCard title={t('referral.refereeTradingVolume')} value={'$350,050'} />
 				<VolumeCard title={t('referral.totalEarnings')} value={getTotalEarnings(referralState.data?.rewards)} />
-				<VolumeCard title={t('referral.totalUsers')} value={referralState.data?.totalUsers ?? 0} />
+				{/* <VolumeCard title={t('referral.totalUsers')} value={referralState.data?.totalUsers ?? 0} /> */}
 				<TotalRefereesCard />
 				<LeaderBoardCard />
 			</div>
