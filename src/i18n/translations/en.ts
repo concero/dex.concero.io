@@ -162,6 +162,9 @@ export const en = {
 			noRewardsTimeline: 'No rewards timeline available yet',
 			noHistoryAvailable: 'No history available yet',
 			copyInviteLink: 'Copy invite link',
+			sendOutYourInvites: 'Send out your invites!',
+			shareThisLink: 'Share this link with friends on social media and start earning!',
+			inviteYourFirstReferee: 'Invite your first referee',
 		},
 	},
 }

@@ -69,7 +69,7 @@ export function ReferralScreen() {
 	const referralScreen = (
 		<div className={classNames.container}>
 			<div className={classNames.mainStack}>
-				<EarningsTimelineCard />
+				<EarningsTimelineCard referralState={referralState} />
 				<EarningBreakDownCard referralStateData={referralState.data} />
 				<ReferralHistoryCard referralStateData={referralState.data} />
 			</div>
@@ -78,7 +78,6 @@ export function ReferralScreen() {
 				<ReferralRewardsCard referralStateData={referralState.data} />
 				<VolumeCard title={t('referral.refereeTradingVolume')} value={'$350,050'} />
 				<VolumeCard title={t('referral.totalEarnings')} value={getTotalEarnings(referralState.data?.rewards)} />
-				{/* <VolumeCard title={t('referral.totalUsers')} value={referralState.data?.totalUsers ?? 0} /> */}
 				<TotalRefereesCard />
 				<LeaderBoardCard />
 			</div>

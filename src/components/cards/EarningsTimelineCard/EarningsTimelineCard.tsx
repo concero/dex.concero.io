@@ -5,14 +5,24 @@ import { Tag } from '../../tags/Tag/Tag'
 import { useEffect, useState } from 'react'
 import { populateEarningsChartData } from './populateEarningsChartData'
 import { Chart } from '../../layout/Chart/Chart'
+import { useAccount } from 'wagmi'
+import { EmptyEarningsTimelineCard } from './EmptyEarningsTimelineCard/EmptyEarningsTimelineCard'
+import { type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 
-export function EarningsTimelineCard() {
+interface EarningsTimelineCardProps {
+	referralState: ReferralState
+}
+
+export function EarningsTimelineCard({ referralState }: EarningsTimelineCardProps) {
 	const [earningsChartData, setEarningsChartData] = useState([])
 	const { t } = useTranslation()
+	const { address } = useAccount()
 
 	useEffect(() => {
-		populateEarningsChartData('0x1234abcdef1234abcdef1234abcdef1234abcdef', setEarningsChartData)
+		void populateEarningsChartData(address, setEarningsChartData)
 	}, [])
+
+	if (!earningsChartData.length) return <EmptyEarningsTimelineCard referralCode={referralState.data?.referralCode} />
 
 	return (
 		<div className={`card ${classNames.container}`}>

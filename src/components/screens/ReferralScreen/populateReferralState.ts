@@ -9,6 +9,7 @@ export async function populateReferralState(referralDispatch: Dispatch<ReferralA
 		if (!referralAccountInfo) {
 			return
 		}
+		console.log(referralAccountInfo)
 		referralDispatch({ type: referralActionType.populateReferralStateData, state: referralAccountInfo })
 	} catch (error) {
 		console.error(error)

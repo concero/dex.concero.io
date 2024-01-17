@@ -3,19 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { type ReferralState } from '../../screens/ReferralScreen/userReferralReducer/types'
 import { Button } from '../../buttons/Button/Button'
 import { IconCheck, IconCopy } from '@tabler/icons-react'
-import { useState } from 'react'
-import { copyToClipboard } from '../../../utils/copyToClipboard'
+import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard'
 
 export function TotalInvitedUsersCard({ referralState }: { referralState: ReferralState }) {
-	const [isCopied, setIsCopied] = useState(false)
 	const { t } = useTranslation()
+	const { copyToClipboard, isCopied } = useCopyToClipboard()
 
 	function handleCopy() {
-		void copyToClipboard(`app.concero.io/join/${referralState.data?.referralCode}` ?? '')
-		setIsCopied(true)
-		setTimeout(() => {
-			setIsCopied(false)
-		}, 7000)
+		void copyToClipboard(`https://app.concero.io/join/${referralState.data?.referralCode}` ?? '')
 	}
 
 	return (
