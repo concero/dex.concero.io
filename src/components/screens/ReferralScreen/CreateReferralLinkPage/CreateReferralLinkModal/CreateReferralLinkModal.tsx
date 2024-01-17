@@ -8,6 +8,7 @@ import { TextInput } from '../../../../input/TextInput'
 import { getSigner } from '../../../../../web3/getSigner'
 import { useSwitchNetwork } from 'wagmi'
 import { setReferralCode } from '../../../../../web3/referralFunctions/setReferralCode'
+import { generateRandomCode } from '../../../../../utils/generateRandomCode'
 
 interface CreateReferralLinkModalProps {
 	isOpen: boolean
@@ -16,16 +17,17 @@ interface CreateReferralLinkModalProps {
 
 export function CreateReferralLinkModal({ isOpen, setIsOpen }: CreateReferralLinkModalProps) {
 	const { t } = useTranslation()
+	const { switchNetworkAsync } = useSwitchNetwork()
 	const [isCustomCodeMode, setIsCustomCodeMode] = useState(false)
 	const [code, setCode] = useState('')
-	const { switchNetworkAsync } = useSwitchNetwork()
 
 	const handleCreateReferralLinkClick = async () => {
 		if (isCustomCodeMode) {
 			if (!code) return
 			await setReferralCode(code, await getSigner(5, switchNetworkAsync))
 		} else {
-			await setReferralCode('test', await getSigner(5, switchNetworkAsync))
+			const randomCode = generateRandomCode()
+			await setReferralCode(randomCode, await getSigner(5, switchNetworkAsync))
 		}
 	}
 

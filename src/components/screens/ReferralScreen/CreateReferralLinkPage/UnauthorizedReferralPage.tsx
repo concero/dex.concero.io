@@ -1,7 +1,7 @@
 import classNames from './CreateReferralLinkPage.module.pcss'
+import referralScreen from '../../../../assets/images/referral/referralScreen.png'
 import { Button } from '../../../buttons/Button/Button'
 import { IconArrowsDiff } from '@tabler/icons-react'
-import referralScreen from '../../../../assets/images/referral/referralScreen.png'
 
 interface CreateReferralLinkPageProps {
 	title: string
