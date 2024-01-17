@@ -6,6 +6,7 @@ import { routes } from './constants/routes'
 import { FullScreenLoader } from './components/layout/FullScreenLoader/FullScreenLoader'
 import { useAccount } from 'wagmi'
 import posthog from 'posthog-js'
+import { JoinScreen } from './components/screens/JoinScreen/JoinScreen'
 
 const SwapScreen = lazy(async () => await import('./components/screens/SwapScreen/SwapScreen').then(module => ({ default: module.SwapScreen })))
 const PortfolioScreen = lazy(
@@ -62,6 +63,7 @@ export const Navigator: FC<NavigatorProps> = () => {
 						}
 					/>
 					<Route path={routes.root} element={<Navigate to={routes.swap} />} />
+					<Route path={`${routes.join}/:referralCode`} element={<JoinScreen />} />
 					<Route path={'/*'} element={<Navigate to={routes.swap} />} />
 				</Routes>
 			</AppScreen>
