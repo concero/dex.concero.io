@@ -9,6 +9,7 @@ export const routes = {
 	earn: '/earn',
 	portfolio: '/portfolio',
 	referral: '/referral',
+	join: '/join',
 	notFound: '/404',
 	resetPassword: '/reset-password',
 }
